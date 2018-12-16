@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GifTastic!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+
+    <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Rendered buttons will get dumped here  -->
+            <div class="col-md-12" id="buttons-dump">Buttons go here</div>
+
+        </div>
+
+        <div class="row">
+
+            <!-- GIFs get dumped here -->
+            <div class="col-md-8" id="gif-dump"></div>
+
+            <!-- Input Field -->
+            <div class="col-md-4">
+                <div id="input-field">
+                    <strong>Add a pokemon!</strong>
+                    <form>
+                        <input type="text" id="input-text">
+                        <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>

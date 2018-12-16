@@ -1,0 +1,16 @@
+.pokemon {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.pokemon-btn {
+    margin: 10px;
+}
+
+body {
+    background-image: url("assets/background.jpg");
+}
+
+#input-field {
+    margin-top: 100px;
+}
