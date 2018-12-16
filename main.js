@@ -7,6 +7,7 @@ window.onload = function() {
 
         var pokemon = $(this).attr("data-name");
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + pokemon + "&api_key=8P7xEJT5ZPqB6hINoOaB8lZ9vf4PgSxu&limit=10";
+        $("#gif-dump").empty();
 
         // Creating an AJAX call for the specific pokemon button being clicked
         $.ajax({
