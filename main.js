@@ -1,6 +1,6 @@
 window.onload = function() {
     // Initial array of buttons
-    var pokemonArray = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"];
+    var pokemonArray = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu", "Eevee"];
 
     // displayPokemonInfo function re-renders the HTML to display the appropriate content
     function displayPokemonInfo() {
@@ -54,16 +54,21 @@ window.onload = function() {
         for (var i = 0; i < pokemonArray.length; i++) {
 
           // Then dynamicaly generating buttons for each movie in the array
-          // Create a new button
+          // Creates a new button
           var a = $("<button>");
+
           // Styles the buttons 
           a.addClass("btn btn-primary");
+
           // Add a class of pokemon-btn to our button
           a.addClass("pokemon-btn");
+
           // Add a data-attribute
           a.attr("data-name", pokemonArray[i]);
+
           // Provide the initial button text
           a.text(pokemonArray[i]);
+
           // Add the button to the buttons-dump div
           $("#buttons-dump").append(a);
         }
@@ -71,15 +76,23 @@ window.onload = function() {
 
       // This function handles events where a movie button is clicked
       $("#submit-button").on("click", function(event) {
+
         event.preventDefault();
+        
         // This line grabs the input from the textbox
         var pokemon = $("#input-text").val().trim();
 
-        // Adding movie from the textbox to our array
-        pokemonArray.push(pokemon);
+        // Doesn't add a button if the input text is blank
+        if (pokemon != "") {
 
-        // Calling renderButtons which handles the processing of our movie array
-        renderButtons();
+          // Adding movie from the textbox to our array
+          pokemonArray.push(pokemon);
+
+          // Calling renderButtons which handles the processing of our movie array
+          renderButtons();
+
+        }
+
       });
 
       // Adding a click event listener to all elements with a class of "pokemon-btn"
