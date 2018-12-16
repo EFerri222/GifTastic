@@ -31,9 +31,15 @@ window.onload = function() {
 
             // Retrieves the URL for the image
             var imgURL = response.data[i].images.fixed_height_still.url;
+            var imgURLanimated = response.data[i].images.fixed_height.url
 
             // Creates an element to hold the image
             var image = $("<img>").attr("src", imgURL);
+
+            image.attr("data-still", imgURL);
+            image.attr("data-animate", imgURLanimated);
+            image.attr("data-state", "still");
+            image.addClass("pokemonGIF");
 
             // Appends the image
             pokemonDiv.append(image);
@@ -47,13 +53,13 @@ window.onload = function() {
     // Function for displaying pokemon data
     function renderButtons() {
 
-        // Deleting the movies prior to adding new movies
+        // Deleting the pokemon prior to adding new pokemon
         $("#buttons-dump").empty();
 
-        // Looping through the array of movies
+        // Looping through the array of pokemon
         for (var i = 0; i < pokemonArray.length; i++) {
 
-          // Then dynamicaly generating buttons for each movie in the array
+          // Then dynamicaly generating buttons for each pokemon in the array
           // Creates a new button
           var a = $("<button>");
 
@@ -74,7 +80,7 @@ window.onload = function() {
         }
       }
 
-      // This function handles events where a movie button is clicked
+      // This function handles events where a pokemon button is clicked
       $("#submit-button").on("click", function(event) {
 
         event.preventDefault();
@@ -85,10 +91,10 @@ window.onload = function() {
         // Doesn't add a button if the input text is blank
         if (pokemon != "") {
 
-          // Adding movie from the textbox to our array
+          // Adding pokemon from the textbox to our array
           pokemonArray.push(pokemon);
 
-          // Calling renderButtons which handles the processing of our movie array
+          // Calling renderButtons which handles the processing of our pokemon array
           renderButtons();
 
         }
@@ -97,6 +103,23 @@ window.onload = function() {
 
       // Adding a click event listener to all elements with a class of "pokemon-btn"
       $(document).on("click", ".pokemon-btn", displayPokemonInfo);
+
+      // Adding a click event listener to animate the GIF if it's still or stop the GIF if it's animated
+      $(document).on("click", ".pokemonGIF", function() {
+        // Gets the value of data-state
+        var state = $(this).attr("data-state");
+        console.log(state);
+        // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+        // Then, set the image's data-state to animate
+        // Else set src to the data-still value
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+      });
 
       // Calling the renderButtons function to display the intial buttons
       renderButtons();
